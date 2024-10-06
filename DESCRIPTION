@@ -1,10 +1,10 @@
 Package: ehrafpunishmentdata
-Title: What the Package Does (One Line, Title Case)
+Title: eHRAF Punishment Data from the 60-Culture PSF Sample
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Zachary", "Garifled", , "zhgarfield@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-1547-1492"))
+Description: This package provides original researcher-coded data on evidence for types of punishment and aggregates other culture-level meta data from secondary data sources.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
