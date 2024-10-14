@@ -5,6 +5,8 @@
 library(tidyverse)
 library(readxl)
 library(stringi)
+library(purrr)  # For map function to replace lapply
+library(readr)
 
 
 # Custom functions --------------------------------------------------------
@@ -687,8 +689,58 @@ culture_level_data$Fixity_residence_SCCSv150 <- coalesce(culture_level_data$Fixi
 culture_level_data <- culture_level_data %>%
   select(-Fixity_residence_SCCSv150_2)
 
-data_culture_level <- culture_level_data
-data_paragraph_level <- data_coded
 
-# End
-usethis::use_data(data_paragraph_level, data_culture_level, overwrite = TRUE)
+# Rename dataframes
+data_culture <- culture_level_data
+data_paragraph <- data_coded
+
+
+# Create document data frame
+raw_data$document_id <- raw_data$docid
+data_rawtext <- raw_data %>%
+  select(uuid, owc_id, document_id, original_pgno, text)
+
+data_document <- raw_data %>%
+  select(owc_id, document_id, author, pubdate, title)
+
+
+# Read in complexity factor data from Ringen et al methods
+complexity_factors_data <- read.csv("data-raw/complexity_factor_scores.csv")
+
+# Deal with arbitrary SCCS numbers
+# Create a named vector with OWC names as keys and assigned SCCS IDs as values
+sccs_ids <- c(
+  "Dogon" = 901,
+  "Kanuri" = 902,
+  "Shluh" = 903,
+  "Libyan Bedouin" = 904,
+  "Serbs" = 905,
+  "Yakut" = 906,
+  "Sinhalese" = 907,
+  "Khasi" = 908,
+  "Lau Fijians" = 909,
+  "Taiwan Hokkien" = 910,
+  "Highland Scots" = 911,
+  "Bahia Brazilians" = 912,
+  "Tlingit" = 913,
+  "Blackfoot" = 914,
+  "Iroquois" = 915,
+  "Hopi" = 916,
+  "Tarahumara" = 917,
+  "Tzeltal" = 918,
+  "Kogi" = 919,
+  "Ona" = 920,
+  "Mataco" = 921,
+  "Bororo" = 922
+)
+
+# Only replace where sccs_id is currently 999
+data_culture$sccs_id[data_culture$sccs_id == 999] <- sccs_ids[data_culture$owc_name[data_culture$sccs_id == 999]]
+
+data_culture$sccs_id <- as.numeric(data_culture$sccs_id)
+
+# Merge in complexity factor data
+
+data_culture <- left_join(data_culture, complexity_factors_data)
+
+# Computation of the Kinship Inten
