@@ -743,4 +743,75 @@ data_culture$sccs_id <- as.numeric(data_culture$sccs_id)
 
 data_culture <- left_join(data_culture, complexity_factors_data)
 
-# Computation of the Kinship Inten
+# Computation of the Kinship Intensity Index (Schulz et al. 2018).
+# Function to convert character columns with numeric values to numeric
+convert_numeric_columns <- function(df) {
+  for (col_name in names(df)) {
+    # Check if the column is a character vector
+    if (is.character(df[[col_name]])) {
+      # Try to convert the column to numeric, suppress warnings for non-numeric values
+      converted_col <- suppressWarnings(as.numeric(df[[col_name]]))
+
+      # Check if all elements can be coerced to numeric
+      if (all(!is.na(converted_col))) {
+        # If all elements are numeric, replace the column with the numeric version
+        df[[col_name]] <- converted_col
+      }
+    }
+  }
+  return(df)
+}
+
+# Apply the function to the data frame
+data_culture <- convert_numeric_columns(data_culture)
+
+
+# Compute the co-residence of extended families subdimension - the mean of domestic organization and residence.
+data_culture <- data_culture %>%
+  mutate(coresidency_ext_families_recode = rowMeans(across(c(domestic_organization_recode, marital_residence_recode)))) %>%
+  relocate(coresidency_ext_families_recode, .before = starts_with("polygamy_recode"))
+
+# Select the re-coded subdimensions related to kinship practices, then standardize (z-score) them.
+standardized_dim <- data_culture %>%
+  select(cousin_marriage_recode, polygamy_recode,
+         lineage_organization_recode, community_organization_recode, coresidency_ext_families_recode) %>%
+  mutate(across(everything(), scale))
+
+# Compute the standardized mean of these standardized subdimensions to calculate the KII scores.
+KII_scores <- as.vector(scale(rowMeans(standardized_dim)))
+data_culture <- data_culture %>%
+  mutate(KII = KII_scores)
+
+
+# Combine CSV files in one dplyr pipe
+# Function to read each CSV and specify "IDs" as a character
+read_csv_as_character <- function(file) {
+  read_csv(file, col_types = cols(IDs = col_character()))  # Ensure "IDs" is read as character
+}
+
+# Function to ensure all columns are of the same type across datasets
+standardize_column_types <- function(df) {
+  df %>%
+    mutate(across(everything(), as.character))  # Convert all columns to character
+}
+
+# Combine CSV files in one dplyr pipe
+combined_data <- list.files(path = "data-raw/", pattern = "(?i)ehrafSearch.*\\.csv$", full.names = TRUE) %>%
+  map(read_csv_as_character) %>%  # Read each CSV file and treat "IDs" as character
+  map(standardize_column_types) %>%  # Standardize all columns to character type
+  bind_rows()  # Bind the rows together
+
+# Add additional metadata to raw text data
+data_rawtext <- left_join(data_rawtext, combined_data, by = "uuid") %>%
+  select(uuid, owc_id, document_id, text, original_pgno)
+
+# Only need unique documents
+data_document <- unique(data_document)
+
+# Remove second culture name
+data_culture <- data_culture %>%
+  select(-society)
+
+
+# End
+usethis::use_data(data_rawtext, data_paragraph, data_document, data_culture, overwrite = TRUE)
