@@ -803,7 +803,7 @@ combined_data <- list.files(path = "data-raw/", pattern = "(?i)ehrafSearch.*\\.c
 
 # Add additional metadata to raw text data
 data_rawtext <- left_join(data_rawtext, combined_data, by = "uuid") %>%
-  select(uuid, owc_id, document_id, text, original_pgno)
+  select(uuid, owc_id, document_id, text, original_pgno, IDs)
 
 # Only need unique documents
 data_document <- unique(data_document)
