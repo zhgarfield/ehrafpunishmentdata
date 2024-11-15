@@ -812,6 +812,8 @@ data_document <- unique(data_document)
 data_culture <- data_culture %>%
   select(-society)
 
+# Load data from Ringen et al analyses
+load("data-raw/complex_coev_sccs_UPDATE.RData")
 
 # End
-usethis::use_data(data_rawtext, data_paragraph, data_document, data_culture, overwrite = TRUE)
+usethis::use_data(data_rawtext, data_paragraph, data_document, data_culture, loadings_df_RI, loadings_df_TSD, overwrite = TRUE)
