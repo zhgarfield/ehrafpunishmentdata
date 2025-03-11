@@ -52,8 +52,8 @@ d3 <- data_coder3[order(data_coder3$uuid),]
 d4 <- data_coder4[order(data_coder4$uuid),]
 d5 <- data_coder5[order(data_coder5$uuid),]
 d6 <- data_coder6[order(data_coder6$uuid),]
-d7 <- data_coder6[order(data_coder7$uuid),]
-d8 <- data_coder6[order(data_coder8$uuid),]
+d7 <- data_coder7[order(data_coder7$uuid),]
+d8 <- data_coder8[order(data_coder8$uuid),]
 
 # Add coder ID variable
 d1$coder <- "coder1"
