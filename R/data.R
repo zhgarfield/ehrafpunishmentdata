@@ -12,7 +12,7 @@
 #'   \item{\code{thirdparty_general}}{character COLUMN_DESCRIPTION}
 #'}
 #' @source \url{http://somewhere.important.com/}
-"data_paragraph_level"
+"data_paragraph"
 
 #' @title DATASET_TITLE
 #' @description DATASET_DESCRIPTION
