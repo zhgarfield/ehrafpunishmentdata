@@ -43,6 +43,7 @@ data_coder4 <- readxl::read_xlsx("data-raw/data_coder4.xlsx")
 data_coder5 <- readxl::read_xlsx("data-raw/data_coder5.xlsx")
 data_coder6 <- readxl::read_xlsx("data-raw/data_coder6.xlsx")
 data_coder7 <- readxl::read_xlsx("data-raw/data_coder7.xlsx")
+data_coder8 <- readxl::read_xlsx("data-raw/data_coder8.xlsx")
 
 # Order and rename data sets
 d1 <- data_coder1[order(data_coder1$uuid),]
@@ -52,6 +53,7 @@ d4 <- data_coder4[order(data_coder4$uuid),]
 d5 <- data_coder5[order(data_coder5$uuid),]
 d6 <- data_coder6[order(data_coder6$uuid),]
 d7 <- data_coder6[order(data_coder7$uuid),]
+d8 <- data_coder6[order(data_coder8$uuid),]
 
 # Add coder ID variable
 d1$coder <- "coder1"
@@ -61,6 +63,7 @@ d4$coder <- "coder4"
 d5$coder <- "coder5"
 d6$coder <- "coder6"
 d7$coder <- "coder7"
+d8$coder <- "coder8"
 
 
 ## Combine coded data sets
@@ -74,8 +77,9 @@ d4 <- select_variables(d4, study_vars)
 d5 <- select_variables(d5, study_vars)
 d6 <- select_variables(d6, study_vars)
 d7 <- select_variables(d7, study_vars)
+d8 <- select_variables(d8, study_vars)
 
-data_coded <- bind_rows(d1, d2, d3, d4, d5, d6, d7)
+data_coded <- bind_rows(d1, d2, d3, d4, d5, d6, d7, d8)
 
 # Rename variables
 data_coded <- data_coded %>%
