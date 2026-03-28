@@ -65,10 +65,15 @@ d6$coder <- "coder6"
 d7$coder <- "coder7"
 d8$coder <- "coder8"
 
+# Set offense_vars to NA for files lacking
+d5$offense_no <- NA
+d6$offense_no <- NA
+d7$offense_no <- NA
+d8$offense_no <- NA
 
 ## Combine coded data sets
 # Select variables for study
-study_vars <- c("uuid","coder", "UP", "2PP", "3PP", "3PP_kin", "3PP_partner", "3PP_stranger")
+study_vars <- c("uuid","coder", "offense_no", "UP", "2PP", "3PP", "3PP_kin", "3PP_partner", "3PP_stranger")
 
 d1 <- select_variables(d1, study_vars)
 d2 <- select_variables(d2, study_vars)
@@ -89,6 +94,21 @@ data_coded <- data_coded %>%
          thirdparty_partner = "3PP_partner",
          thirdparty_general = "3PP_stranger",
          unspecified = "UP")
+
+# Offense is present if:
+#   (a) any coder recorded offense_no > 0, OR
+#   (b) any coder coded a punishment (UP, 2PP, or 3PP) as present
+offense_indicator <- data_coded %>%
+  group_by(uuid) %>%
+  summarise(
+    offense_present = as.integer(
+      any(offense_no > 0, na.rm = TRUE) |
+        any(`unspecified` > 0, na.rm = TRUE) |
+        any(`secondparty` > 0, na.rm = TRUE) |
+        any(`thirdparty` > 0, na.rm = TRUE)
+    ),
+    .groups = "drop"
+  )
 
 coded_vars <- c("secondparty",
                 "thirdparty",
@@ -816,8 +836,13 @@ data_document <- unique(data_document)
 data_culture <- data_culture %>%
   select(-society)
 
+# Add offense indicatory into data_paragrap
+
+data_paragraph <- left_join(data_paragraph, offense_indicator)
+
 # Load data from Ringen et al analyses
 load("data-raw/complex_coev_sccs_UPDATE.RData")
 
 # End
-usethis::use_data(data_rawtext, data_paragraph, data_document, data_culture, loadings_df_RI, loadings_df_TSD, overwrite = TRUE)
+usethis::use_data(data_rawtext, data_paragraph, data_document,
+                  data_culture, loadings_df_RI, loadings_df_TSD, overwrite = TRUE)

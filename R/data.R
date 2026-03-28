@@ -4,6 +4,7 @@
 #' \describe{
 #'   \item{\code{uuid}}{character COLUMN_DESCRIPTION}
 #'   \item{\code{coder}}{character COLUMN_DESCRIPTION}
+#'   \item{\code{offense_present}}{character COLUMN_DESCRIPTION}
 #'   \item{\code{unspecified}}{character COLUMN_DESCRIPTION}
 #'   \item{\code{secondparty}}{character COLUMN_DESCRIPTION}
 #'   \item{\code{thirdparty}}{character COLUMN_DESCRIPTION}
