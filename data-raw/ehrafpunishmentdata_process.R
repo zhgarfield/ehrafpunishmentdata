@@ -95,6 +95,17 @@ data_coded <- data_coded %>%
          thirdparty_general = "3PP_stranger",
          unspecified = "UP")
 
+coded_vars <- c("secondparty",
+                "thirdparty",
+                "thirdparty_kin",
+                "thirdparty_partner",
+                "thirdparty_general",
+                "unspecified")
+
+# Standardize capitalization across all coded variables
+data_coded <- data_coded %>%
+  mutate(across(all_of(coded_vars), ~ str_to_lower(.x)))
+
 # Offense is present if:
 #   (a) any coder recorded offense_no > 0, OR
 #   (b) any coder coded a punishment (UP, 2PP, or 3PP) as present
@@ -103,25 +114,18 @@ offense_indicator <- data_coded %>%
   summarise(
     offense_present = as.integer(
       any(offense_no > 0, na.rm = TRUE) |
-        any(`unspecified` > 0, na.rm = TRUE) |
-        any(`secondparty` > 0, na.rm = TRUE) |
-        any(`thirdparty` > 0, na.rm = TRUE)
+        any(unspecified == "evidence for", na.rm = TRUE) |
+        any(secondparty == "evidence for", na.rm = TRUE) |
+        any(thirdparty == "evidence for", na.rm = TRUE)
     ),
     .groups = "drop"
   )
 
-coded_vars <- c("secondparty",
-                "thirdparty",
-                "thirdparty_kin",
-                "thirdparty_partner",
-                "thirdparty_general",
-                "unspecified")
-
 
 # Fill in uncoded sub-codes for third-party
-data_coded$thirdparty_kin[data_coded$thirdparty=="No evidence"] <- "No evidence"
-data_coded$thirdparty_partner[data_coded$thirdparty=="No evidence"] <- "No evidence"
-data_coded$thirdparty_general[data_coded$thirdparty=="No evidence"] <- "No evidence"
+data_coded$thirdparty_kin[data_coded$thirdparty=="no evidence"] <- "no evidence"
+data_coded$thirdparty_partner[data_coded$thirdparty=="no evidence"] <- "no evidence"
+data_coded$thirdparty_general[data_coded$thirdparty=="no evidence"] <- "no evidence"
 
 # Filter rows where all coded variables are NA, i.e., coder did not code those rows
 # List of columns to check for NA
@@ -838,7 +842,8 @@ data_culture <- data_culture %>%
 
 # Add offense indicatory into data_paragrap
 
-data_paragraph <- left_join(data_paragraph, offense_indicator)
+data_paragraph <- data_paragraph %>%
+  left_join(offense_indicator, by = "uuid")
 
 # Load data from Ringen et al analyses
 load("data-raw/complex_coev_sccs_UPDATE.RData")
