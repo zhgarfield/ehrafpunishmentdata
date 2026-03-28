@@ -5,7 +5,7 @@
 library(tidyverse)
 library(readxl)
 library(stringi)
-library(purrr)  # For map function to replace lapply
+library(purrr)
 library(readr)
 
 
