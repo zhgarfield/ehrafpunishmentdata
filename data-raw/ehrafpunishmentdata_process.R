@@ -121,6 +121,18 @@ offense_indicator <- data_coded %>%
     .groups = "drop"
   )
 
+offense_present_review <- read_csv("data-raw/offense_present_review.csv") %>%
+  rename(offense_reclassified = offense_present)
+
+offense_indicator <- offense_indicator %>%
+  left_join(offense_present_review, by = "uuid") %>%
+  mutate(
+    offense_present = case_when(
+      offense_reclassified == 1 ~ 1L,
+      TRUE ~ offense_present
+    )
+  ) %>%
+  select(-offense_reclassified)
 
 # Fill in uncoded sub-codes for third-party
 data_coded$thirdparty_kin[data_coded$thirdparty=="no evidence"] <- "no evidence"
@@ -840,10 +852,13 @@ data_document <- unique(data_document)
 data_culture <- data_culture %>%
   select(-society)
 
-# Add offense indicatory into data_paragrap
+# Add offense indicator into data_paragraph
 
 data_paragraph <- data_paragraph %>%
-  left_join(offense_indicator, by = "uuid")
+  left_join(offense_indicator, by = "uuid") %>%
+  select(-offense_no)
+
+
 
 # Load data from Ringen et al analyses
 load("data-raw/complex_coev_sccs_UPDATE.RData")
