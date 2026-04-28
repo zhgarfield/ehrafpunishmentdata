@@ -135,7 +135,7 @@ If you use this data package, please cite both the package and the underlying ma
 	keywords = {Cooperation, Cross-Cultural Methods, Ecology, Ethnography, Kinship Intensity, Punishment}
 }
 
-Garfield, Z. H. (2026). ehrafpunishmentdata: Paragraph-level coded ethnographic data on punishment from 60 societies (Version X.Y.Z) [R package]. https://github.com/zhgarfield/ehrafpunishmentdata
+Garfield, Z. H. (2026). ehrafpunishmentdata: Paragraph-level coded ethnographic data on punishment from 60 societies (Version v0.1.1) [R package]. https://github.com/zhgarfield/ehrafpunishmentdata
 ```
 
 For the SCCS-derived predictors, please also cite:
