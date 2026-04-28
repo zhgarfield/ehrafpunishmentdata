@@ -1,0 +1,55 @@
+cff-version: 1.2.0
+message: "If you use this data package, please cite both the package and the underlying manuscript."
+title: "ehrafpunishmentdata: Paragraph-level coded ethnographic data on punishment from 60 societies"
+abstract: >-
+  Paragraph-level coded ethnographic data on punishment from 60 societies in
+  the eHRAF Probability Sample Files (PSF). Eight coders independently rated
+  5,478 ethnographic paragraphs, producing 11,893 codings of evidence for
+  second-party punishment, third-party punishment, and three subtypes of
+  third-party punishment (kin-directed, partner-directed, generalized). Each
+  paragraph received at least two independent codings. The package contains
+  six data tables: paragraph-level codings, paragraph-level raw text and
+  metadata, document-level metadata, society-level covariates including
+  resource-use intensification (RI), technological and social differentiation
+  (TSD), and the Kinship Intensity Index (KII), and variable loadings for the
+  RI and TSD latent factors.
+type: dataset
+authors:
+  - family-names: Garfield
+    given-names: Zachary H.
+    email: zachary.garfield@um6p.ma
+    affiliation: "Mohammed VI Polytechnic University"
+    orcid: "https://orcid.org/0000-0002-1547-1492"
+version: 0.1.1
+date-released: "2026-04-28"
+license: CC-BY-4.0
+repository-code: "https://github.com/zhgarfield/ehrafpunishmentdata"
+url: "https://github.com/zhgarfield/ehrafpunishmentdata"
+keywords:
+  - ethnography
+  - cross-cultural
+  - punishment
+  - third-party punishment
+  - eHRAF
+  - cultural evolution
+  - Bayesian
+  - kinship
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.XXXXXXX"
+    description: "Zenodo concept DOI (replace with actual DOI after Zenodo archiving completes)"
+  - type: url
+    value: "https://osf.io/preprints/psyarxiv/g79vd_v1"
+    description: "PsyArXiv preprint of the underlying manuscript"
+preferred-citation:
+  type: article
+  title: "Third-party punishment is common across human societies but varies with socioecology"
+  authors:
+    - family-names: Garfield
+      given-names: Zachary H.
+      email: zachary.garfield@um6p.ma
+      affiliation: "Mohammed VI Polytechnic University"
+      orcid: "https://orcid.org/0000-0002-1547-1492"
+  journal: "PsyArXiv"
+  year: 2026
+  url: "https://osf.io/preprints/psyarxiv/g79vd_v1"
