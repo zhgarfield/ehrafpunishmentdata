@@ -124,7 +124,17 @@ Inter-coder reliability was evaluated on a training subset; details are reported
 If you use this data package, please cite both the package and the underlying manuscript:
 
 ```
-[Author list]. (under review). Third-party punishment is common across human societies but varies with socioecology. *Nature Human Behaviour*.
+@misc{garfield_third-party_2026,
+	title = {Third-party punishment is common across human societies but varies with socioecology},
+	url = {https://osf.io/preprints/psyarxiv/g79vd_v1/},
+	urldate = {2026-04-28},
+	publisher = {PsyArXiv},
+	author = {Garfield, Zachary H and Fiorio, Grégory and Ebert, Ana C K and Iben El Rhazi, Sophia and De Petrillo, Francesca and Molho, Catherine},
+	month = apr,
+	year = {2026},
+	keywords = {Cooperation, Cross-Cultural Methods, Ecology, Ethnography, Kinship Intensity, Punishment},
+	file = {Preprint PDF:/Users/zgarf/Zotero/storage/5X5PEQ5P/Garfield et al. - 2026 - Third-party punishment is common across human societies but varies with socioecology.pdf:application/pdf},
+}
 
 Garfield, Z. H. (2026). ehrafpunishmentdata: Paragraph-level coded ethnographic data on punishment from 60 societies (Version X.Y.Z) [R package]. https://github.com/zhgarfield/ehrafpunishmentdata
 ```
