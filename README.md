@@ -8,7 +8,11 @@ Paragraph-level coded ethnographic data on punishment from 60 societies in the e
 
 This package archives the data underlying the manuscript:
 
-> [Author list]. Third-party punishment is common across human societies but varies with socioecology. *Nature Human Behaviour* (in press).
+> Zachary H. Garfield1†*, Grégory Fiorio2, Ana Kaneko Ebert3, Sophia Iben El Rhazi1, Francesca De Petrillo4†, Catherine Molho5†
+> 
+1Africa Institute for Research in Economics and Social Sciences, University Mohammed VI Polytechnic, Rabat, Morocco; 2Institut Jean Nicod, Département d’études cognitives, École normale supérieure, Université PSL, EHESS, CNRS, Paris, France; 3 Vrije Universiteit, Amsterdam, The Netherlands; 4School of Psychology & Biosciences Institute, Newcastle University, Newcastle upon Tyne, England; 5Department of Social and Behavioral Sciences, Toulouse School of Economics, Toulouse, France.
+
+Third-party punishment is common across human societies but varies with socioecology. https://osf.io/preprints/psyarxiv/g79vd_v1
 
 Eight coders independently rated 5,478 ethnographic paragraphs from 60 societies in the eHRAF Probability Sample Files (PSF), producing 11,893 paragraph-level codings of evidence for second-party punishment, third-party punishment, and three subtypes of third-party punishment (kin-directed, partner-directed, generalized). Each paragraph received at least two independent codings.
 
