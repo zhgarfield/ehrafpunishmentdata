@@ -1,5 +1,7 @@
 # ehrafpunishmentdata
 
+https://doi.org/10.5281/zenodo.19857531
+
 Paragraph-level coded ethnographic data on punishment from 60 societies in the eHRAF Probability Sample Files (PSF), packaged as an R data package.
 
 ## Overview
