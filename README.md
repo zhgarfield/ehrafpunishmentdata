@@ -141,7 +141,7 @@ Garfield, Z. H. (2026). ehrafpunishmentdata: Paragraph-level coded ethnographic 
 For the SCCS-derived predictors, please also cite:
 
 - Ringen, E. J., Duda, P., & Jaeggi, A. V. (2019). The evolution of daily food sharing: A Bayesian phylogenetic analysis. *Evolution and Human Behavior*, 40(4), 375–384.
-- Ringen, E. J., et al. (2021). Novel phylogenetic methods reveal that resource-use intensification drives the evolution of "complex" societies. [Add full citation.]
+- Ringen, E. J., et al. (2021). Novel phylogenetic methods reveal that resource-use intensification drives the evolution of "complex" societies.
 - Schulz, J. F., Bahrami-Rad, D., Beauchamp, J. P., & Henrich, J. (2019). The Church, intensive kinship, and global psychological variation. *Science*, 366(6466), eaau5141.
 
 ## Contact
