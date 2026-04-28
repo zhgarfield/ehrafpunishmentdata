@@ -132,8 +132,7 @@ If you use this data package, please cite both the package and the underlying ma
 	author = {Garfield, Zachary H and Fiorio, Grégory and Ebert, Ana C K and Iben El Rhazi, Sophia and De Petrillo, Francesca and Molho, Catherine},
 	month = apr,
 	year = {2026},
-	keywords = {Cooperation, Cross-Cultural Methods, Ecology, Ethnography, Kinship Intensity, Punishment},
-	file = {Preprint PDF:/Users/zgarf/Zotero/storage/5X5PEQ5P/Garfield et al. - 2026 - Third-party punishment is common across human societies but varies with socioecology.pdf:application/pdf},
+	keywords = {Cooperation, Cross-Cultural Methods, Ecology, Ethnography, Kinship Intensity, Punishment}
 }
 
 Garfield, Z. H. (2026). ehrafpunishmentdata: Paragraph-level coded ethnographic data on punishment from 60 societies (Version X.Y.Z) [R package]. https://github.com/zhgarfield/ehrafpunishmentdata
