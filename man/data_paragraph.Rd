@@ -3,28 +3,73 @@
 \docType{data}
 \name{data_paragraph}
 \alias{data_paragraph}
-\title{DATASET_TITLE}
+\title{Paragraph-level coding records}
 \format{
-A data frame with 8775 rows and 8 variables:
+A data frame with 11960 rows and 9 variables:
 \describe{
-\item{\code{uuid}}{character COLUMN_DESCRIPTION}
-\item{\code{coder}}{character COLUMN_DESCRIPTION}
-\item{\code{offense_present}}{character COLUMN_DESCRIPTION}
-\item{\code{unspecified}}{character COLUMN_DESCRIPTION}
-\item{\code{secondparty}}{character COLUMN_DESCRIPTION}
-\item{\code{thirdparty}}{character COLUMN_DESCRIPTION}
-\item{\code{thirdparty_kin}}{character COLUMN_DESCRIPTION}
-\item{\code{thirdparty_partner}}{character COLUMN_DESCRIPTION}
-\item{\code{thirdparty_general}}{character COLUMN_DESCRIPTION}
+\item{\code{uuid}}{Unique paragraph identifier from eHRAF World Cultures.
+One uuid corresponds to one paragraph of ethnographic text and may
+appear in multiple rows of this table (one per coder).}
+\item{\code{coder}}{Anonymized identifier for the coder who produced the
+coding record. Eight coders contributed to the project.}
+\item{\code{unspecified}}{Coder's evaluation of evidence for unspecified
+punishment, defined as punishment whose enforcer (second-party,
+third-party, or otherwise) cannot be identified from the paragraph
+text. One of "Evidence for", "No evidence", or "Evidence against".}
+\item{\code{secondparty}}{Coder's evaluation of evidence for second-party
+punishment, defined as enforcement carried out by the victim of the
+offense or their close kin acting on the victim's behalf. One of
+"Evidence for", "No evidence", or "Evidence against".}
+\item{\code{thirdparty}}{Coder's evaluation of evidence for third-party
+punishment, defined as enforcement carried out by an individual or
+institution other than the victim. One of "Evidence for", "No
+evidence", or "Evidence against".}
+\item{\code{thirdparty_kin}}{Coder's evaluation of evidence for
+kin-directed third-party punishment, defined as third-party
+enforcement by relatives of the victim or offender (e.g., lineage
+members, extended family). One of "Evidence for", "No evidence", or
+"Evidence against".}
+\item{\code{thirdparty_partner}}{Coder's evaluation of evidence for
+partner-directed third-party punishment, defined as third-party
+enforcement by exchange partners or in-group affiliates of the
+offender (e.g., trading partners, age-mates, ritual associates).
+One of "Evidence for", "No evidence", or "Evidence against".}
+\item{\code{thirdparty_general}}{Coder's evaluation of evidence for
+generalized third-party punishment, defined as third-party
+enforcement by individuals or institutions with no specific
+relationship to either party (e.g., chiefs, councils, courts,
+police, unrelated community members). One of "Evidence for", "No
+evidence", or "Evidence against".}
+\item{\code{offense_present}}{Binary indicator (0 or 1) for whether the
+paragraph describes an offense, transgression, or rule violation.
+Inferential analyses are restricted to rows with
+\code{offense_present == 1}.}
 }
 }
 \source{
-\url{http://somewhere.important.com/}
+eHRAF World Cultures Probability Sample Files (PSF), accessed via
+the Human Relations Area Files (\url{https://ehrafworldcultures.yale.edu}).
+Codings produced by the project team using OCM subject codes 626, 627,
+696, and 681-689 to retrieve relevant ethnographic passages.
 }
 \usage{
 data_paragraph
 }
 \description{
-DATASET_DESCRIPTION
+Coder-by-paragraph coding records from the eHRAF Probability Sample Files
+(PSF) ethnographic punishment study. Each row represents one coder's
+evaluation of one paragraph for one set of punishment categories. Eight
+coders independently rated 5,478 ethnographic paragraphs from 60 societies,
+producing 11,893 codings; this table contains all coder-paragraph records.
+Inferential analyses are restricted to paragraphs coded by at least two
+coders and to rows with \code{offense_present == 1}, since punishment is
+only meaningfully coded in the context of a preceding offense.
+}
+\details{
+Codings reflect manual review of paragraph text against operational
+definitions of second-party punishment, third-party punishment, and three
+subtypes of third-party punishment (kin-directed, partner-directed,
+generalized). For each category, coders selected one of three values:
+"Evidence for", "No evidence", or "Evidence against".
 }
 \keyword{datasets}
